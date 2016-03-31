@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Add archlinuxfr repo for yaourt access
-echo 'echo -e "[archlinuxfr]\nServer = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf' | sudo -s
+echo 'echo -e "[archlinuxfr]\nSigLevel = Never\nServer = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf' | sudo -s
 
 # Refresh pacman repos
 sudo pacman -Syy

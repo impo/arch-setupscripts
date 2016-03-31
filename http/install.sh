@@ -41,7 +41,7 @@ awk -v GG="United States" '{if(match($0,GG) != "0")AA="1";if(AA == "1"){if( leng
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 
 # Install base packages
-pacstrap /mnt base
+pacstrap /mnt base base-devel
 
 # Generate fstab
 genfstab -p /mnt >> /mnt/etc/fstab

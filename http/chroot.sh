@@ -18,7 +18,7 @@ mkinitcpio -p linux
 echo "root:vagrant" | chpasswd
 
 # Install ssh tools and bootloader package
-pacman -S --noconfirm openssh grub sudo
+pacman -S --noconfirm openssh grub
 
 # Install bootloader
 grub-install --target=i386-pc /dev/sda
