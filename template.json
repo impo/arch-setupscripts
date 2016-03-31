@@ -31,5 +31,10 @@
 			"script": "bootstrap.sh"
 		}
 	],
-	"post-processors": ["vagrant"]
+	"post-processors": [
+		{
+			"type": "vagrant",
+			"output": "htc.box"
+		}
+	]
 }
