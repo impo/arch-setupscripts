@@ -29,7 +29,10 @@
 	"provisioners": [
 		{
 			"type": "shell",
-			"script": "bootstrap.sh"
+			"scripts": [
+				"bootstrap.sh",
+				"virtualbox.sh"
+			]
 		}
 	],
 	"post-processors": [
