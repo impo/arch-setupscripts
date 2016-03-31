@@ -31,4 +31,25 @@ echo "vagrant:vagrant" | chpasswd
 # Add vagrant entry for sudoers
 echo "vagrant ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
+# Ensure ssh directories exist
+mkdir -p /home/vagrant/.ssh/authorized_keys
+cd /home/vagrant
+
+# Make sure ssh directories have correct permissions
+chmod 700 /home/vagrant/.ssh
+chmod 600 /home/vagrant/.ssh/authorized_keys
+
+# Configure ssh
+echo "UseDNS no" >> /etc/ssh/sshd_config;
+echo "GSSAPIAuthentication no" >> /etc/ssh/sshd_config;
+systemctl enable sshd
+
+# Move keys into proper directory
+mv /vagrant /home/vagrant/.ssh/authorized_keys
+mv /vagrant.pub /home/vagrant/.ssh/authorized_keys
+
+# Take ownership of keys
+chown vagrant /home/vagrant/.ssh/authorized_keys/vagrant
+chown vagrant /home/vagrant/.ssh/authorized_keys/vagrant.pub
+
 exit
