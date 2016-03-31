@@ -19,7 +19,7 @@
 			],
 			"boot_command": [
 				"<enter><wait10><wait10>",
-				"wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/install.sh <enter><wait10>",
+				"wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/install.sh <enter><wait>",
 				"wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/chroot.sh <enter><wait>",
 				"wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/vagrant.pub <enter><wait>",
 				"sh install.sh<enter>"
@@ -29,10 +29,12 @@
 	"provisioners": [
 		{
 			"type": "shell",
-			"scripts": [
-				"bootstrap.sh",
-				"virtualbox.sh"
-			]
+			"script": "scripts/bootstrap.sh"
+		},
+		{
+			"type": "shell",
+			"script": "scripts/virtualbox.sh",
+			"only": ["virtualbox-iso"]
 		}
 	],
 	"post-processors": [
