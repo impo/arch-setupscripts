@@ -35,7 +35,7 @@ echo "vagrant ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 mkdir -p /home/vagrant/.ssh
 
 # Copy pubkey in
-cp /mnt/vagrant.pub /home/vagrant/.ssh/authorized_keys
+cp /vagrant.pub /home/vagrant/.ssh/authorized_keys
 
 # Make sure ssh directories have correct permissions
 chmod 700 /home/vagrant/.ssh
