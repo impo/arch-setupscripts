@@ -20,7 +20,6 @@
 				"<enter><wait10><wait10>",
 				"wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/install.sh <enter><wait10>",
 				"wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/chroot.sh <enter><wait>",
-				"wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/vagrant <enter><wait>",
 				"wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/vagrant.pub <enter><wait>",
 				"sh install.sh<enter>"
 			]

@@ -30,7 +30,7 @@ mount /dev/sda1 /mnt
 cp chroot.sh /mnt/chroot.sh
 
 # Copy keys to new root
-cp vagrant* /mnt/
+cp vagrant.pub /mnt/
 
 # Filter mirrorlist for just US mirrors
 wget -O /etc/pacman.d/mirrorlist https://www.archlinux.org/mirrorlist/all/

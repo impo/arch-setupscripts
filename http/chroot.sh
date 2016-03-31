@@ -33,8 +33,9 @@ echo "vagrant ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # Ensure ssh directories exist
 mkdir -p /home/vagrant/.ssh
-touch /home/vagrant/.ssh/authorized_keys
-cd /home/vagrant
+
+# Copy pubkey in
+cp /mnt/vagrant.pub /home/vagrant/.ssh/authorized_keys
 
 # Make sure ssh directories have correct permissions
 chmod 700 /home/vagrant/.ssh
@@ -45,10 +46,8 @@ echo "UseDNS no" >> /etc/ssh/sshd_config;
 echo "GSSAPIAuthentication no" >> /etc/ssh/sshd_config;
 systemctl enable sshd
 
-# Move keys into proper directory
-mv /vagrant /home/vagrant/.ssh
-mv /vagrant.pub /home/vagrant/.ssh
-cat /home/vagrant/.ssh/vagrant.pub >> /home/vagrant/.ssh/authorized_keys
+# Enable automatic dhcp
+systemctl enable dhcpcd
 
 # Take ownership of ssh directories
 chown vagrant -R /home/vagrant/.ssh
