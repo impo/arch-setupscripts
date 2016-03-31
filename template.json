@@ -31,5 +31,6 @@
 			"type": "shell",
 			"script": "bootstrap.sh"
 		}
-	]
+	],
+	"post-processors": ["vagrant"]
 }
