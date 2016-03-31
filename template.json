@@ -2,6 +2,7 @@
 	"builders": [
 		{
 			"type": "virtualbox-iso",
+			"guest_additions_mode": "disable",
 			"guest_os_type": "ArchLinux_64",
 			"iso_url": "http://mirrors.kernel.org/archlinux/iso/2016.03.01/archlinux-2016.03.01-dual.iso",
 			"iso_checksum": "992f046c3fb5afecaf8734126f2a095f437ca9b8",
