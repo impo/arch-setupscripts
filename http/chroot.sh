@@ -48,8 +48,7 @@ systemctl enable sshd
 mv /vagrant /home/vagrant/.ssh/authorized_keys
 mv /vagrant.pub /home/vagrant/.ssh/authorized_keys
 
-# Take ownership of keys
-chown vagrant /home/vagrant/.ssh/authorized_keys/vagrant
-chown vagrant /home/vagrant/.ssh/authorized_keys/vagrant.pub
+# Take ownership of ssh directories
+chown vagrant -R /home/vagrant/.ssh
 
 exit
