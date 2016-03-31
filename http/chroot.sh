@@ -32,7 +32,8 @@ echo "vagrant:vagrant" | chpasswd
 echo "vagrant ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # Ensure ssh directories exist
-mkdir -p /home/vagrant/.ssh/authorized_keys
+mkdir -p /home/vagrant/.ssh
+touch /home/vagrant/.ssh/authorized_keys
 cd /home/vagrant
 
 # Make sure ssh directories have correct permissions
@@ -45,10 +46,12 @@ echo "GSSAPIAuthentication no" >> /etc/ssh/sshd_config;
 systemctl enable sshd
 
 # Move keys into proper directory
-mv /vagrant /home/vagrant/.ssh/authorized_keys
-mv /vagrant.pub /home/vagrant/.ssh/authorized_keys
+mv /vagrant /home/vagrant/.ssh
+mv /vagrant.pub /home/vagrant/.ssh
+cat /home/vagrant/.ssh/vagrant.pub >> /home/vagrant/.ssh/authorized_keys
 
 # Take ownership of ssh directories
 chown vagrant -R /home/vagrant/.ssh
+chgrp vagrant -R /home/vagrant/.ssh
 
 exit
