@@ -1,0 +1,35 @@
+{
+	"builders": [
+		{
+			"type": "virtualbox-iso",
+			"guest_os_type": "ArchLinux_64",
+			"iso_url": "http://mirrors.kernel.org/archlinux/iso/2016.03.01/archlinux-2016.03.01-dual.iso",
+			"iso_checksum": "992f046c3fb5afecaf8734126f2a095f437ca9b8",
+			"iso_checksum_type": "sha1",
+			"ssh_username": "vagrant",
+			"ssh_password": "vagrant",
+			"ssh_timeout": "7m",
+			"shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
+			"disk_size": 20000,
+			"http_directory": "http",
+			"vboxmanage": [
+				["modifyvm", "{{.Name}}", "--boot1", "disk"],
+				["modifyvm", "{{.Name}}", "--boot2", "dvd"]
+			],
+			"boot_command": [
+				"<enter><wait10><wait10>",
+				"wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/install.sh <enter><wait10>",
+				"wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/chroot.sh <enter><wait>",
+				"wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/vagrant <enter><wait>",
+				"wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/vagrant.pub <enter><wait>",
+				"sh install.sh<enter>"
+			]
+		}
+	],
+	"provisioners": [
+		{
+			"type": "shell",
+			"script": "bootstrap.sh"
+		}
+	]
+}
